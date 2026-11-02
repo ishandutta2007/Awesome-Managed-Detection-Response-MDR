@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#0e172a" />
+      <stop offset="100%" stop-color="#080c15" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradients -->
+    <linearGradient id="primaryGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.05" />
+    </linearGradient>
+
+    <!-- Dynamic Pulse Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Radar Sweep Animation -->
+    <style>
+      @keyframes pulseBeam {
+        0%, 100% { opacity: 0.15; transform: scale(0.98); }
+        50% { opacity: 0.45; transform: scale(1.02); }
+      }
+      @keyframes sweep {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes particleFloat {
+        0% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+        50% { transform: translateY(-15px) translateX(8px); opacity: 0.7; }
+        100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+      }
+      @keyframes signalWave {
+        0% { r: 10px; opacity: 0.9; }
+        100% { r: 85px; opacity: 0; }
+      }
+      @keyframes nodeFlicker {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+      .bg-radar {
+        transform-origin: 1050px 180px;
+        animation: sweep 12s linear infinite;
+      }
+      .wave-pulse {
+        transform-origin: 1050px 180px;
+        animation: signalWave 3s ease-out infinite;
+      }
+      .wave-pulse-2 {
+        transform-origin: 1050px 180px;
+        animation: signalWave 3s ease-out infinite 1.5s;
+      }
+      .particle-1 { animation: particleFloat 4s ease-in-out infinite; }
+      .particle-2 { animation: particleFloat 6s ease-in-out infinite 1s; }
+      .particle-3 { animation: particleFloat 5s ease-in-out infinite 2s; }
+      .flicker { animation: nodeFlicker 2.5s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Subtle Cyber Tech Grid Matrix (Behind Text) -->
+  <g opacity="0.08" stroke="#38bdf8" stroke-width="1">
+    <line x1="0" y1="60" x2="1200" y2="60" />
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="180" x2="1200" y2="180" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="150" y1="0" x2="150" y2="360" />
+    <line x1="300" y1="0" x2="300" y2="360" />
+    <line x1="450" y1="0" x2="450" y2="360" />
+    <line x1="600" y1="0" x2="600" y2="360" />
+    <line x1="750" y1="0" x2="750" y2="360" />
+    <line x1="900" y1="0" x2="900" y2="360" />
+    <line x1="1050" y1="0" x2="1050" y2="360" />
+  </g>
+
+  <!-- Dynamic Radar / Telemetry Animation (Right Side Sandbox, non-interfering) -->
+  <g opacity="0.85">
+    <circle cx="1050" cy="180" r="120" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="4 6" opacity="0.3" />
+    <circle cx="1050" cy="180" r="80" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.4" />
+    <circle cx="1050" cy="180" r="40" fill="none" stroke="#60a5fa" stroke-width="1.5" opacity="0.6" />
+    
+    <!-- Expanding Signal Waves -->
+    <circle cx="1050" cy="180" fill="none" stroke="#38bdf8" stroke-width="2" class="wave-pulse" />
+    <circle cx="1050" cy="180" fill="none" stroke="#818cf8" stroke-width="1.5" class="wave-pulse-2" />
+
+    <!-- Radar Sweep Beam -->
+    <g class="bg-radar">
+      <path d="M 1050 180 L 1170 180 A 120 120 0 0 0 1050 60 Z" fill="url(#shieldGrad)" />
+      <line x1="1050" y1="180" x2="1170" y2="180" stroke="#38bdf8" stroke-width="2" filter="url(#glow)" />
+    </g>
+
+    <!-- Live Telemetry Threat Intercept Nodes -->
+    <circle cx="1090" cy="140" r="4" fill="#f43f5e" class="flicker" filter="url(#glow)" />
+    <circle cx="1020" cy="220" r="3.5" fill="#10b981" class="flicker" style="animation-delay: 1.2s;" />
+    <circle cx="1110" cy="205" r="3" fill="#38bdf8" class="flicker" style="animation-delay: 0.7s;" />
+    <circle cx="1000" cy="150" r="2.5" fill="#f59e0b" class="flicker" style="animation-delay: 1.8s;" />
+  </g>
+
+  <!-- Floating Telemetry Indicator Dots (Atmospheric dynamic particles) -->
+  <circle cx="80" cy="70" r="2" fill="#38bdf8" class="particle-1" />
+  <circle cx="340" cy="40" r="2.5" fill="#818cf8" class="particle-2" />
+  <circle cx="680" cy="65" r="2" fill="#34d399" class="particle-3" />
+  <circle cx="790" cy="310" r="2.5" fill="#38bdf8" class="particle-2" />
+  <circle cx="210" cy="320" r="2" fill="#818cf8" class="particle-1" />
+
+  <!-- Shield Icon Graphic -->
+  <g transform="translate(60, 48)">
+    <rect width="64" height="64" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+    <path d="M32 16 L48 23 C48 35 41 44 32 48 C23 44 16 35 16 23 Z" fill="none" stroke="url(#primaryGlow)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+    <circle cx="32" cy="31" r="3" fill="#38bdf8" />
+  </g>
+
+  <!-- FOREGROUND METADATA PILLS -->
+  <g transform="translate(140, 68)">
+    <rect width="138" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="12" y="17" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">CURATED ECOSYSTEM</text>
+  </g>
+  <g transform="translate(290, 68)">
+    <rect width="132" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="12" y="17" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1">24/7 SOC &amp; MDR</text>
+  </g>
+  <g transform="translate(434, 68)">
+    <rect width="136" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="12" y="17" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1">OPEN-SOURCE SOC</text>
+  </g>
+
+  <!-- FOREGROUND TITLE & SUBTITLE (Unobstructed & High-Contrast) -->
+  <!-- Main Title -->
+  <text x="60" y="175" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" letter-spacing="-0.5">
+    Awesome Managed Detection &amp; Response
+  </text>
+  
+  <text x="60" y="215" fill="url(#primaryGlow)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700">
+    (MDR) &amp; Self-Hosted SOC Tooling
+  </text>
+
+  <!-- Secondary Descriptive Line -->
+  <text x="60" y="260" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="400">
+    Curated Benchmark of Enterprise MDR Platforms, 24/7 Managed SOCs &amp; Battle-Tested Open-Source Tooling
+  </text>
+
+  <!-- Live Status Bar -->
+  <g transform="translate(60, 290)">
+    <circle cx="6" cy="6" r="4" fill="#10b981" class="flicker" />
+    <text x="18" y="10" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">
+      Active Threat Telemetry • Continuous Threat Hunting • Incident Containment &amp; Rollback
+    </text>
+  </g>
+</svg>
