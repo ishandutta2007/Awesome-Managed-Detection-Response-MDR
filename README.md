@@ -60,9 +60,9 @@ The table below benchmarks the premier SaaS and hosted platforms, sorted by **Co
 
 While **Managed Detection & Response (MDR)** is inherently an operator-driven human service, the underlying detection engines, telemetry collectors, and case orchestration frameworks can be self-hosted.
 
-The table below benchmarks prominent open-source SOC and detection tools, sorted by **GitHub Stars in descending order**:
+The table below benchmarks prominent open-source SOC and detection tools, sorted by **GitHub_Stars in descending order**:
 
-| Repository / Tool | GitHub Stars | Core Architecture & Primary Role | Detection & Response Capabilities |
+| Repository / Tool | GitHub_Stars | Core Architecture & Primary Role | Detection & Response Capabilities |
 | :--- | :--- | :--- | :--- |
 | **[Osquery](https://github.com/osquery/osquery)** | [![Stars](https://img.shields.io/github/stars/osquery/osquery?style=social&color=white)](https://github.com/osquery/osquery/stargazers) | SQL-powered operating system instrumentation (C++) | Exposes an operating system as a high-performance relational database; allows analysts to execute scheduled or real-time SQL queries across OS processes, connections, and files. |
 | **[Wazuh](https://github.com/wazuh/wazuh)** | [![Stars](https://img.shields.io/github/stars/wazuh/wazuh?style=social&color=white)](https://github.com/wazuh/wazuh/stargazers) | Unified open-source SIEM & XDR platform (C/Python) | Production-ready host telemetry collector, log aggregation engine, File Integrity Monitoring (FIM), vulnerability detection, and active automated threat response scripts. |
